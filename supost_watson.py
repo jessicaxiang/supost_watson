@@ -19,19 +19,16 @@ cars_test_url = 'http://supost-prod.s3.amazonaws.com/posts/129806338/post_129806
 visual_recognition = VisualRecognitionV3('2017-02-18', api_key='203d41f3ef200e7522fe945b876a50c58ec78da5')
 
 
-print(json.dumps(visual_recognition.delete_classifier(classifier_id='CarsvsBikes_193265598'), indent=2))
+# print(json.dumps(visual_recognition.delete_classifier(classifier_id='CarsvsBikes_193265598'), indent=2))
 
 
-with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes:
-    print(json.dumps(visual_recognition.create_classifier('Bike?',
- bikes_positive_examples=bikes,negative_examples=cars), indent=2))
+# with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes:
+#     print(json.dumps(visual_recognition.create_classifier('Bike?',
+#  bikes_positive_examples=bikes,negative_examples=cars), indent=2))
 
 # maybe we want this part later
 # with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
-#     print(json.dumps(
-#         visual_recognition.classify(images_file=image_file, threshold=0.1,
-#                                     classifier_ids=['CarsvsTrucks_1479118188',
-#                                                     'default']), indent=2))
+print(json.dumps(visual_recognition.classify(images_url=cars_test_url, threshold=0.0,classifier_ids=['Bike_178207375']), indent=2))
 
 # print(json.dumps(visual_recognition.get_classifier('YOUR CLASSIFIER ID'),
 # indent=2))
