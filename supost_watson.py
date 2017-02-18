@@ -12,17 +12,19 @@ from os.path import join, dirname
 from os import environ
 from watson_developer_cloud import VisualRecognitionV3
 
-test_url = 'http://supost-prod.s3.amazonaws.com/posts/129805618/post_129805618a'
+# bike_test_url = 'http://supost-prod.s3.amazonaws.com/posts/129805618/post_129805618a'
+cars_test_url = 'http://supost-prod.s3.amazonaws.com/posts/129806338/post_129806338a'
+
 
 visual_recognition = VisualRecognitionV3('2017-02-18', api_key='203d41f3ef200e7522fe945b876a50c58ec78da5')
 
-with open(join(dirname(__file__), '../resources/cars.zip'), 'rb') as cars, \
-       open(join(dirname(__file__), '../resources/bikes.zip'), 'rb') as
-trucks:
-    print(json.dumps(visual_recognition.create_classifier('Cars vs Bikes',
- cars_positive_examples=bikes,
 
-negative_examples=cars), indent=2))
+print(json.dumps(visual_recognition.delete_classifier(classifier_id='CarsvsBikes_193265598'), indent=2))
+
+
+with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes:
+    print(json.dumps(visual_recognition.create_classifier('Bike?',
+ bikes_positive_examples=bikes,negative_examples=cars), indent=2))
 
 # maybe we want this part later
 # with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
@@ -41,14 +43,16 @@ negative_examples=cars), indent=2))
 #
 # cars_positive_examples=image_file), indent=2))
 
-print(json.dumps(visual_recognition.classify(images_url=test_url), indent=2))
+# print(json.dumps(visual_recognition.classify(images_url=bike_test_url), indent=2))
+
+# general
+# print(json.dumps(visual_recognition.classify(images_url=cars_test_url), indent=2))
 
 # face recognition - we don't need it
 # print(
 #     json.dumps(visual_recognition.detect_faces(images_url=test_url), indent=2))
 
-# print(json.dumps(visual_recognition.delete_classifier(classifier_id='YOUR
-# CLASSIFIER ID'), indent=2))
+# print(json.dumps(visual_recognition.delete_classifier(classifier_id='CarsvsBikes_193265598'), indent=2))
 
 # do we need this?
 # print(json.dumps(visual_recognition.list_classifiers(), indent=2))
