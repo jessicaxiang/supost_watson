@@ -16,19 +16,20 @@ test_url = 'http://supost-prod.s3.amazonaws.com/posts/129805618/post_129805618a'
 
 visual_recognition = VisualRecognitionV3('2017-02-18', api_key='203d41f3ef200e7522fe945b876a50c58ec78da5')
 
-# with open(join(dirname(__file__), '../resources/cars.zip'), 'rb') as cars, \
-#        open(join(dirname(__file__), '../resources/trucks.zip'), 'rb') as
-# trucks:
-#     print(json.dumps(visual_recognition.create_classifier('Cars vs Trucks',
-#  cars_positive_examples=cars,
-#
-# negative_examples=trucks), indent=2))
+with open(join(dirname(__file__), '../resources/cars.zip'), 'rb') as cars, \
+       open(join(dirname(__file__), '../resources/bikes.zip'), 'rb') as
+trucks:
+    print(json.dumps(visual_recognition.create_classifier('Cars vs Bikes',
+ cars_positive_examples=bikes,
 
-with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
-    print(json.dumps(
-        visual_recognition.classify(images_file=image_file, threshold=0.1,
-                                    classifier_ids=['CarsvsTrucks_1479118188',
-                                                    'default']), indent=2))
+negative_examples=cars), indent=2))
+
+# maybe we want this part later
+# with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
+#     print(json.dumps(
+#         visual_recognition.classify(images_file=image_file, threshold=0.1,
+#                                     classifier_ids=['CarsvsTrucks_1479118188',
+#                                                     'default']), indent=2))
 
 # print(json.dumps(visual_recognition.get_classifier('YOUR CLASSIFIER ID'),
 # indent=2))
@@ -49,7 +50,8 @@ print(json.dumps(visual_recognition.classify(images_url=test_url), indent=2))
 # print(json.dumps(visual_recognition.delete_classifier(classifier_id='YOUR
 # CLASSIFIER ID'), indent=2))
 
-print(json.dumps(visual_recognition.list_classifiers(), indent=2))
+# do we need this?
+# print(json.dumps(visual_recognition.list_classifiers(), indent=2))
 
 # text recognition - we don't need it
 # with open(join(dirname(__file__), '../resources/text.png'), 'rb')\
