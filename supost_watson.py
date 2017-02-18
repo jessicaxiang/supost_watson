@@ -12,19 +12,19 @@ from os.path import join, dirname
 from os import environ
 from watson_developer_cloud import VisualRecognitionV3
 
-# bike_test_url = 'http://supost-prod.s3.amazonaws.com/posts/129805618/post_129805618a'
+bike_test_url = 'http://supost-prod.s3.amazonaws.com/posts/129805618/post_129805618a'
 cars_test_url = 'http://supost-prod.s3.amazonaws.com/posts/129806338/post_129806338a'
-
+CLASSIFIER_ID = 'BikeorCar_752220438'
 
 visual_recognition = VisualRecognitionV3('2017-02-18', api_key='203d41f3ef200e7522fe945b876a50c58ec78da5')
 
 
-# print(json.dumps(visual_recognition.delete_classifier(classifier_id='CarsvsBikes_193265598'), indent=2))
+#print(json.dumps(visual_recognition.delete_classifier(classifier_id='Bike_1462735921'), indent=2))
 
 
-# with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes:
-#     print(json.dumps(visual_recognition.create_classifier('Bike?',
-#  bikes_positive_examples=bikes,negative_examples=cars), indent=2))
+# with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes, open(join(dirname(__file__), 'resources/negative.zip'), 'rb') as negative:
+#     print(json.dumps(visual_recognition.create_classifier('Bike or Car',
+#  bikes_positive_examples=bikes,cars_positive_examples=cars, negative_examples=negative), indent=2))
 
 # maybe we want this part later
 # with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
@@ -33,11 +33,12 @@ visual_recognition = VisualRecognitionV3('2017-02-18', api_key='203d41f3ef200e75
 # print(json.dumps(visual_recognition.get_classifier('YOUR CLASSIFIER ID'),
 # indent=2))
 
-with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes,open(join(dirname(__file__), 'resources/negative.zip'), 'rb') as negative:
-    print(json.dumps(visual_recognition.update_classifier(
-'Bike_178207375',bikes_positive_examples=bikes, cars_positive_examples=cars, negative_examples=negative), indent=2))
+# with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes,open(join(dirname(__file__), 'resources/negative.zip'), 'rb') as negative:
 
-# print(json.dumps(visual_recognition.classify(images_url=cars_test_url, threshold=0.0,classifier_ids=['Bike_178207375']), indent=2))
+#     print(json.dumps(visual_recognition.update_classifier('Bike_178207375', cars_positive_examples=cars, negative_examples=negative), indent=2))
+
+print(json.dumps(visual_recognition.classify(images_url=cars_test_url, threshold=0.0,classifier_ids=[CLASSIFIER_ID]), indent=2))
+print(json.dumps(visual_recognition.classify(images_url=bike_test_url, threshold=0.0,classifier_ids=[CLASSIFIER_ID]), indent=2))
 
 # print(json.dumps(visual_recognition.classify(images_url=bike_test_url), indent=2))
 
