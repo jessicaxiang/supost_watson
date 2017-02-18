@@ -28,17 +28,16 @@ visual_recognition = VisualRecognitionV3('2017-02-18', api_key='203d41f3ef200e75
 
 # maybe we want this part later
 # with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
-print(json.dumps(visual_recognition.classify(images_url=cars_test_url, threshold=0.0,classifier_ids=['Bike_178207375']), indent=2))
+
 
 # print(json.dumps(visual_recognition.get_classifier('YOUR CLASSIFIER ID'),
 # indent=2))
 
-# with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as
-# image_file:
-#     print(json.dumps(visual_recognition.update_classifier(
-# 'CarsvsTrucks_1479118188',
-#
-# cars_positive_examples=image_file), indent=2))
+with open(join(dirname(__file__), 'resources/cars.zip'), 'rb') as cars, open(join(dirname(__file__), 'resources/bikes.zip'), 'rb') as bikes,open(join(dirname(__file__), 'resources/negative.zip'), 'rb') as negative:
+    print(json.dumps(visual_recognition.update_classifier(
+'Bike_178207375',bikes_positive_examples=bikes, cars_positive_examples=cars, negative_examples=negative), indent=2))
+
+# print(json.dumps(visual_recognition.classify(images_url=cars_test_url, threshold=0.0,classifier_ids=['Bike_178207375']), indent=2))
 
 # print(json.dumps(visual_recognition.classify(images_url=bike_test_url), indent=2))
 
