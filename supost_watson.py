@@ -12,10 +12,9 @@ from os.path import join, dirname
 from os import environ
 from watson_developer_cloud import VisualRecognitionV3
 
-test_url = 'https://www.ibm.com/ibm/ginni/images' \
-           '/ginni_bio_780x981_v4_03162016.jpg'
+test_url = 'http://supost-prod.s3.amazonaws.com/posts/129805618/post_129805618a'
 
-visual_recognition = VisualRecognitionV3('2016-05-20', api_key='YOUR API KEY')
+visual_recognition = VisualRecognitionV3('2017-02-18', api_key='203d41f3ef200e7522fe945b876a50c58ec78da5')
 
 # with open(join(dirname(__file__), '../resources/cars.zip'), 'rb') as cars, \
 #        open(join(dirname(__file__), '../resources/trucks.zip'), 'rb') as
