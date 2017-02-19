@@ -21,4 +21,4 @@ def get_classification():
 	return render_template('index.html',tags=tags, text=result, car=is_car, bike=is_bike, img=image_url)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80)
