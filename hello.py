@@ -1,24 +1,15 @@
-from flask import Flask
+from flask import Flask, request, render_template
 app = Flask(__name__)
-
-# @app.route("/")
-# def home():
-#     return render_template('index.html')
-
-# @app.route('/index', methods=['GET'])
-# def get_image():
-#     image_url = request.form['image_url']
-#     result = 'Bike'
-#     return render_template('result.html', result=result)
+ 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return render_template('index.html')
 
-# @app.route('/result', methods=['GET', 'POST'])
-# def home():
-#     image_url = request.form['image_url']
-#     result = 'Bike'
-#     return redirect('result.html',result=result)
+@app.route("/", methods=['POST'])
+def get_classification(): 
+	image_url = request.form['url']
+	result = "bike"
+	return render_template('index.html',text=result, image_url=image_url)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

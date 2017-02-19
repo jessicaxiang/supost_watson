@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Image Upload</title>
+	</head>
+	<body>
+
+	<h1>Image Identify</h1>
+
+	<form action="/" method="POST">
+		Image URL:
+		<input name="url">
+		<input type="submit">
+	</form>
+	 
+	{% if text %}
+	<h1>{{ text }}</h1>
+	{% endif %}
+
+</body>
+</html>
