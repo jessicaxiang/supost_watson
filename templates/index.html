@@ -12,7 +12,11 @@
 		<input name="url">
 		<input type="submit">
 	</form>
-	 
+
+	{% if img %}
+	<img src={{img}} alt="Image">
+	{% endif %}
+	
 	{% if text %}
 	<h1>{{ text }}</h1>
 	{% endif %}

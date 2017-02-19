@@ -32,20 +32,13 @@ def get_classification(image):
 	result = visual_recognition.classify(images_url=image, threshold=0.0,classifier_ids=[CLASSIFIER_ID])
 	bike_score = result['images'][0]['classifiers'][0]['classes'][0]['score']
 	car_score = result['images'][0]['classifiers'][0]['classes'][1]['score']
-	print(car_score)
-	print(bike_score)
+
 	if car_score > bike_score and car_score > 0.55:
 		return 'Car'
 	elif bike_score > car_score and bike_score > 0.55:
 		return 'Bike'
 	else:
-		return ''
-
-
-def main():
-	print(get_classification(cars_test_url))
-
-main()
+		return 'Neither'
 
 # maybe we want this part later
 # with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
