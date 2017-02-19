@@ -1,0 +1,13 @@
+.image_container {
+	left: 50%;
+    margin-right: -50%;
+}
+
+.tags {
+	font-size: 25px;
+}
+
+.submit-button {
+	left: 50%;
+    margin-right: -50%;
+}

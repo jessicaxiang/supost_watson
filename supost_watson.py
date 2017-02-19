@@ -37,8 +37,21 @@ def get_classification(image):
 		return 'Car'
 	elif bike_score > car_score and bike_score > 0.55:
 		return 'Bike'
-	else:
-		return 'Neither'
+
+	return 'Neither'
+
+def get_tags(image):
+	result = visual_recognition.classify(images_url=image)
+	tags = []
+	for c in result['images'][0]['classifiers'][0]['classes']:
+		if c['score'] > 0.60:
+			tags.append(c["class"])
+	return tags
+
+# def main():
+# 	get_tags(bike_test_url)
+
+# main()
 
 # maybe we want this part later
 # with open(join(dirname(__file__), '../resources/car.jpg'), 'rb') as image_file:
